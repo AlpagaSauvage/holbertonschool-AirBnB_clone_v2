@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
-# Prepare your web servers
+# Setup web static
 
 sudo apt update
 sudo apt -y install nginx
-
-mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
-touch /data/web_static/releases/test/index.html
-chmod 777 /data/web_static/releases/test/index.html
-echo "test" >> /data/web_static/releases/test/index.html
-ln -sf /data/web_static/releases/test/ /data/web_static/current 
-chown -hR ubuntu /data/
-sed -i "/listen 80 default_server;/a location /hbnb_static/ {alias /data/web_static/current/};" /etc/nginx/sites-available/default
-
+sudo mkdir -p /data/web_static/releases/test /data/web_static/shared/
+sudo touch /data/web_static/releases/test/index.html
+sudo chmod 777 /data/web_static/releases/test/index.html
+sudo echo 'zizi' >> /data/web_static/releases/test/index.html
+sudo ln -sf /data/web_static/current /data/web_static/releases/test/
+sudo chown -R ubuntu /data/
+sudo sed -i '/server_name _;/a location /hbnb_static/ { alias /data/web_static/current/;}' /etc/nginx/sites-available/default
 sudo /etc/init.d/nginx restart

@@ -1,9 +1,12 @@
 #!/usr/bin/python3
-""" Compress before sending """
 
 import fabric
 import os
 from datetime import datetime
+dt = datetime.now()
+ts = datetime.timestamp(dt)
+date_time = datetime.fromtimestamp(ts)
+str_good = date_time.strftime("%Y%m%d%H%M%S")
 
 def do_pack():
-    
+    os.system('sudo tar -c "web_static_",str_good "/data/web_static/"')
