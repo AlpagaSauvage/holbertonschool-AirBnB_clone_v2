@@ -49,4 +49,5 @@ class BaseModel:
         return dictionary
 
     def delete(self):
+        """Self deletion"""
         self.delete(self)
