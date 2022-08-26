@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# pack web static
 
 import fabric
 import os
